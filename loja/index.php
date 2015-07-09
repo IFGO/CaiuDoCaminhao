@@ -13,6 +13,15 @@ $funcoes = new funcoes();
         <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/bootstrap.min.css" type="text/css" />
         <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/estilo.css" type="text/css" />
         <title>Caiu do Caminhão - Página Inicial</title>
+        <script>            
+            $(document).ready(function(){
+                animarLogomarcasPareceiros();
+                function animarLogomarcasPareceiros(){
+                    $("#logomarcasParceiros").animate({left: '0%'}, 10000);
+                    $("#logomarcasParceiros").animate({left: '-50%'}, 10000, animarLogomarcasPareceiros);
+                }                
+            });
+        </script>
         <script type="text/javascript">              
             var ajax = function(){
 				//buscar valor digitado
