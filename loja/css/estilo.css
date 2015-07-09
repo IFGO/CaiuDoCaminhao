@@ -107,3 +107,51 @@ input[type="radio"], input[type="checkbox"] {
   color: #FFF !important;
   font-weight: normal !important;
 }
+#slideHome{
+    background:#fff;
+    width:360px;
+    height:240px;
+    display:block;
+    overflow:hidden;
+    
+}
+#slideHomeButton{
+    display: none;
+    position:absolute;
+    margin: 5px;
+    z-index: 500;
+}
+
+#slideHomeButton a{
+    background: #333;
+    width: 30px;
+    height: 20px;
+    display: inline-block;
+    text-align: center;
+    line-height: 20px;
+    font:bold 12pt arial;
+    color:#fff;
+    opacity: 0.6;
+}
+
+#slideHomeButton a:hover{
+    background:#555;
+}
+
+#slideHome ul{
+    list-style:none;
+    display: table;
+    position: relative;
+    padding: 0;
+}
+#slideHome ul li{
+    width:360px;
+    height:240px;
+    display:inline-block;
+    position:relative;
+}
+#slideHome ul li img{
+    width:100%;
+    height:100%;
+}
+

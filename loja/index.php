@@ -34,8 +34,49 @@ $funcoes = new funcoes();
                                                 document.getElementById("lista").innerHTML += '<div><a href="index.php?pagina=produto&id=' + response[i].id +'"><img style="width:50px;" src="' + response[i].foto + '" />' + response[i].nome +'</a></div>';				
 					}					
                 });               
-			};                    
+            };
+        </script>
+        <script type="text/javascript">
+            //slide show
+            $(function(){            
+                var velocidade = 3500;
+                var rotate = setInterval(auto, velocidade);
+                var larguraLi = $("#slideHome ul li").outerWidth(); // pegar a largura do li 
+            
+                //mostra os botoes
+                $("#slideHome").hover(function(){
+                    $("#slideHomeButton").fadeIn();
+                },function(){
+                    $("#slideHomeButton").fadeOut();
+                });
+                               
+                // botao proximo
+                $(".prox").click(function(e){
+                    e.preventDefault();
+                    $("#slideHome ul").css({'width':'99999%'}).animate({left:-larguraLi}, function(){
+                        $("#slideHome ul li").last().after($("#slideHome ul li").first());
+                        $(this).css({'left':'0','width':'auto'});
+                      });
+                    });
+                
+                // botao voltar
+                $('.ant').click(function(e){
+                    e.preventDefault();    $("#slideHome ul li").first().before($("#slideHome ul li").last().css({'margin-left':-larguraLi}));
+                    $("#slideHome ul").css({'width':'99999%'}).animate({left:larguraLi},function(){
+                        $("#slideHome ul li").first().css({'margin-left':'0'});
+                        $(this).css({'left':'0','width':'auto'})
+                    });
+                });
+                
+                //passagem de slides
+                function auto(){
+                    $('.prox').click();
+               };               
+          });
+          
         </script> 
+            
+       <style      
         
         <style>
             /* CSS PARA TESTE */
