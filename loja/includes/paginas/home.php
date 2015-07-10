@@ -49,7 +49,7 @@ $func = new funcoes();
             </div>
     </div>
     
-    <div class="col-md-12 categoria">
+    <div class="col-md-12">
     <br><br><h3>Confira nossos produtos em destaque:</h3>
     <?php
         $conexao = mysqli_connect("localhost", "root", "", "caiudocaminhao");
@@ -74,9 +74,29 @@ $func = new funcoes();
         <?php } ?>
     </div>
         
-    
-</div>
-
-    
+    <h3>Você também pode gostar:</h3>
+    <div id="accordion">
+        <?php
+            $conexao = mysqli_connect("localhost", "root", "", "caiudocaminhao");
+            $sql = "SELECT * FROM categorias ORDER BY nome;";
+            $categorias = mysqli_query($conexao, $sql);
+                while($categoria = $categorias->fetch_array()) { ?>
+                    <h4> <?php echo $categoria['nome']; ?> </h4>
+                    <div>
+                        <?php 
+                            $sqlProdutos = "SELECT * FROM produtos WHERE idCategoria= {$categoria['id']} AND destaque=0;";
+                            $produtos = mysqli_query($conexao, $sqlProdutos);
+                            while($produto = $produtos->fetch_array()) {?>
+                                <div class="col-md-2 produto">
+                                    <a href="index.php?pagina=produto&id=<?php echo $produto['id']; ?>">
+                                        <h2><?php echo $produto['nome']; ?></h2>
+                                        <img src="<?php echo $produto['foto']; ?>" />
+                                        <p>R$ <?php echo $produto['valor']; ?></p>
+                                    </a>
+                                </div>
+                            <?php } ?>
+                    </div>
+                <?php } ?>
+    </div>
     
 </div>

@@ -41,27 +41,27 @@ main {
     font-size: 32px;
 }
 
-.categoria .produto {
+.produto {
     border: solid 1px #fff;
     transition: background-color 1s ease;
 }
 
-.categoria .produto:hover {
+.produto:hover {
     background: #f9f9f9;
     border: solid 1px #f0f0f0;
 }
 
-.categoria .produto h2 {
+.produto h2 {
     font-size: 16px;
     height: 35px;
     overflow: hidden;
     color: #2B2B2B;
 }
 
-.categoria .produto a {
+.produto a {
     text-decoration: none;
 }
-.categoria .produto p {
+.produto p {
     color: #EC3237;
     font-weight:bold;
     font-size: 18px;

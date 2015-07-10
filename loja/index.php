@@ -12,13 +12,16 @@ $funcoes = new funcoes();
         <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/bootstrap-theme.min.css" type="text/css" />
         <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/bootstrap.min.css" type="text/css" />
         <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/estilo.css" type="text/css" />
+        <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/jquery-ui.css" type="text/css" />    
+        <script src="<?php echo $funcoes->requestUrl();?>js/jquery-ui.js"></script>
         <title>Caiu do Caminhão - Página Inicial</title>
         <script>            
             $(document).ready(function(){
-                animarLogomarcasPareceiros();
-                function animarLogomarcasPareceiros(){
+                $("#accordion").accordion();
+                animarLogomarcasParceiros();
+                function animarLogomarcasParceiros(){
                     $("#logomarcasParceiros").animate({left: '0%'}, 10000);
-                    $("#logomarcasParceiros").animate({left: '-50%'}, 10000, animarLogomarcasPareceiros);
+                    $("#logomarcasParceiros").animate({left: '-50%'}, 10000, animarLogomarcasParceiros);
                 }                
             });
         </script>
