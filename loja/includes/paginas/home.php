@@ -8,30 +8,24 @@ $func = new funcoes();
                
      ?>
     
-    <div id="slideHome">
-        
-        <div id="slideHomeButton"> 
-            <a href="#" class="ant">&laquo;</a>
-            <a href="#" class="prox">&raquo;</a>
-        </div>
-        
-        <ul>
-            <?php
-            foreach($arq as $arq){  
-                if($arq != '.' and $arq != '..'){
-            ?>
-                <li>
-                    <img src="slideshow/<?php echo $arq; ?>" alt="<?php echo $arq; ?>" />
-                </li>
-                <?php
-                
-            }
-            }  
-                ?>
-
-        </ul>
-    </div>
     
+    <div id="slideHome"> 
+        <div id="slideHomeButton"> 
+                <a href="#" class="ant" id="ant">&laquo;</a>
+                <a href="#" class="prox" id="prox">&raquo;</a>
+        </div>
+        <div id="slideImg">    
+                <?php
+                foreach($arq as $arq){  
+                    if($arq != '.' and $arq != '..'){
+                ?>                
+                <img src="slideshow/<?php echo $arq; ?>" alt="<?php echo $arq; ?>" /> 
+                <?php
+                    }
+                }  
+                ?>
+        </div>    
+    </div>    
     
     <h5>Nossos Parceiros</h5>
     <div style="width: 100%; height: 50px; margin-left: auto; margin-right: auto; position: relative; top: 50%; overflow: hidden;">            

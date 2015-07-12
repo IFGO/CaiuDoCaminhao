@@ -111,16 +111,15 @@ input[type="radio"], input[type="checkbox"] {
     background:#fff;
     width:100%;
     height:240px;
-    display:block;
-    overflow:hidden;
-    
+    position: relative;
+    overflow: hidden;          
 }
-#slideHomeButton{
-    display: none;
-    position:absolute;
-    margin: 5px;
-    z-index: 500;
-}
+
+#slideImg img{
+    width:100%;
+    height:240px; 
+    overflow: hidden;
+ }
 
 #slideHomeButton a{
     background: #333;
@@ -131,27 +130,11 @@ input[type="radio"], input[type="checkbox"] {
     line-height: 20px;
     font:bold 12pt arial;
     color:#fff;
-    opacity: 0.6;
+    opacity: 0.7;
 }
 
 #slideHomeButton a:hover{
     background:#555;
 }
 
-#slideHome ul{
-    list-style:none;
-    display: table;
-    position: relative;
-    padding: 0;
-}
-#slideHome ul li{
-    width:960px;
-    height:240px;
-    display:inline-block;
-    position:relative;
-}
-#slideHome ul li img{
-    width:100%;
-    height:100%;
-}
 

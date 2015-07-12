@@ -12,8 +12,9 @@ $funcoes = new funcoes();
         <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/bootstrap-theme.min.css" type="text/css" />
         <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/bootstrap.min.css" type="text/css" />
         <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/estilo.css" type="text/css" />
-        <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/jquery-ui.css" type="text/css" />    
+        <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/jquery-ui.css" type="text/css" /> 
         <script src="<?php echo $funcoes->requestUrl();?>js/jquery-ui.js"></script>
+        <script src="<?php echo $funcoes->requestUrl();?>js/jquery.cycle.all.js"></script>
         <title>Caiu do Caminhão - Página Inicial</title>
         <script>            
             $(document).ready(function(){
@@ -48,48 +49,16 @@ $funcoes = new funcoes();
                 });               
             };
         </script>
-        <script type="text/javascript">
-            //slide show
-            $(function(){            
-                var velocidade = 3500;
-                var rotate = setInterval(auto, velocidade);
-                var larguraLi = $("#slideHome ul li").outerWidth(); // pegar a largura do li 
-            
-                //mostra os botoes
-                $("#slideHome").hover(function(){
-                    $("#slideHomeButton").fadeIn();
-                },function(){
-                    $("#slideHomeButton").fadeOut();
-                });
-                               
-                // botao proximo
-                $(".prox").click(function(e){
-                    e.preventDefault();
-                    $("#slideHome ul").css({'width':'99999%'}).animate({left:-larguraLi}, function(){
-                        $("#slideHome ul li").last().after($("#slideHome ul li").first());
-                        $(this).css({'left':'0','width':'auto'});
-                      });
-                    });
-                
-                // botao voltar
-                $('.ant').click(function(e){
-                    e.preventDefault();    $("#slideHome ul li").first().before($("#slideHome ul li").last().css({'margin-left':-larguraLi}));
-                    $("#slideHome ul").css({'width':'99999%'}).animate({left:larguraLi},function(){
-                        $("#slideHome ul li").first().css({'margin-left':'0'});
-                        $(this).css({'left':'0','width':'auto'})
-                    });
-                });
-                
-                //passagem de slides
-                function auto(){
-                    $('.prox').click();
-               };               
-          });
-          
-        </script> 
-            
-       <style      
         
+        <script>
+            $('#slideImg').cycle({
+                fx: 'scrollRight',
+                speed: 300,
+                next: '#prox',
+                prev: '#ant'
+            });
+        </script>
+            
         <style>
             /* CSS PARA TESTE */
             * {
