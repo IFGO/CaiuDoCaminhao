@@ -1,18 +1,17 @@
 <?php
-
-//include_once "./conexao.dados";
-
 class conexao {
 
-    private $db_host = 'localhost'; // servidor
-    private $db_user = 'root'; // usuario do banco
-    private $db_pass = ''; // senha do usuario do banco
-    private $db_name = 'caiudocaminhao'; // nome do banco
+    private $db_host = '104.236.106.180'; // servidor
+    private $db_user = 'caminhao'; // usuario do banco
+    private $db_pass = 'caminhao123'; // senha do usuario do banco
+    private $db_name = 'caminhao'; // nome do banco
     private $conect = false;
 
     public function getConexao(){
         return mysqli_connect($this->db_host, $this->db_user, $this->db_pass, $this->db_name);
     }
+    
+    
     /*
      * Função de abrir conexão 
      * e estabelecendo que só existe uma conexão abriremos a única conexão
@@ -20,7 +19,6 @@ class conexao {
      * @return true
      * 
      */
-
     public function connect() {
         if (!$this->conect) {
 //            Parametros da conexão (usando o mysqli, pois o mysql está deprected)
@@ -35,6 +33,7 @@ class conexao {
         }
     } 
 
+    
     /*
      * Função de fechar conexão 
      * e estabelecendo que só existe uma conexão fecharemos a única conexão
@@ -42,7 +41,6 @@ class conexao {
      * @return true
      * 
      */
-
     public function disconnect() {
         if ($this->con) {
             if (mysqli_close()) {
