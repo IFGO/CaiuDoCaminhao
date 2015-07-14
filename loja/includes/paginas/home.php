@@ -1,53 +1,50 @@
 <?php
-$func = new funcoes();
-     ?>
+    require_once './conexao/conexao.php';
+    $con = new conexao();  // instancia classe de conxao
+    $con->connect(); // abre conexao com o banco
+    $func = new funcoes();
+?>
 <div class="col-md-12">
     <?php
         $dir = $func->getCaminhoAbsoluto().'slideshow';
-        $arq = scandir($dir);
-               
-     ?>
-    
+        $arq = scandir($dir);               
+    ?>
     
     <div id="slideHome"> 
         <div id="slideHomeButton"> 
-                <a href="#" class="ant" id="ant">&laquo;</a>
-                <a href="#" class="prox" id="prox">&raquo;</a>
+            <a href="#" class="ant" id="ant">&laquo;</a>
+            <a href="#" class="prox" id="prox">&raquo;</a>
         </div>
         <div id="slideImg">    
-                <?php
+            <?php
                 foreach($arq as $arq){  
-                    if($arq != '.' and $arq != '..'){
-                ?>                
-                <img src="slideshow/<?php echo $arq; ?>" alt="<?php echo $arq; ?>" /> 
-                <?php
-                    }
-                }  
-                ?>
+                    if($arq != '.' and $arq != '..'){ ?>                
+                        <img src="slideshow/<?php echo $arq; ?>" alt="<?php echo $arq; ?>" /> 
+                    <?php }
+                } ?>
         </div>    
     </div>    
     
     <h5>Nossos Parceiros</h5>
     <div style="width: 100%; height: 50px; margin-left: auto; margin-right: auto; position: relative; top: 50%; overflow: hidden;">            
-            <div id="logomarcasParceiros" style="position: absolute; height: 50px; left: -110%;">
-                <?php 
-                    $diretorio = $func->getCaminhoAbsoluto().'logomarcas';
-                    $arquivo = scandir($diretorio);
-                    foreach($arquivo as $arquivo){  
-                        if($arquivo != '.' and $arquivo != '..'){ ?>
-                            <a href="#" style="margin-right: 10px;"> <img src="logomarcas/<?php echo $arquivo; ?>" height="50px"> </a>
-                        <?php }
-                    }
-                ?>
-            </div>
+        <div id="logomarcasParceiros" style="position: absolute; height: 50px; left: -110%;">
+            <?php 
+                $diretorio = $func->getCaminhoAbsoluto().'logomarcas';
+                $arquivo = scandir($diretorio);
+                foreach($arquivo as $arquivo){  
+                    if($arquivo != '.' and $arquivo != '..'){ ?>
+                        <a href="#" style="margin-right: 10px;"> <img src="logomarcas/<?php echo $arquivo; ?>" height="50px"> </a>
+                    <?php }
+                }
+            ?>
+        </div>
     </div>
     
     <div class="col-md-12">
     <br><br><h3>Confira nossos produtos em destaque:</h3>
     <?php
-        $conexao = mysqli_connect("localhost", "root", "", "caiudocaminhao");
         $sql = "SELECT * FROM produtos WHERE destaque=1;";
-        $produtosDestaque = mysqli_query($conexao, $sql);
+        $produtosDestaque = mysqli_query($con->getConexao(), $sql);
         if($produtosDestaque->num_rows > 0) {
             $arrayProdutos = array();
             while($destaque = $produtosDestaque->fetch_array()) {
@@ -70,15 +67,14 @@ $func = new funcoes();
     <h3>Você também pode gostar:</h3>
     <div id="accordion">
         <?php
-            $conexao = mysqli_connect("localhost", "root", "", "caiudocaminhao");
             $sql = "SELECT * FROM categorias ORDER BY nome;";
-            $categorias = mysqli_query($conexao, $sql);
+            $categorias = mysqli_query($con->getConexao(), $sql);
                 while($categoria = $categorias->fetch_array()) { ?>
                     <h4> <?php echo $categoria['nome']; ?> </h4>
                     <div>
                         <?php 
                             $sqlProdutos = "SELECT * FROM produtos WHERE idCategoria= {$categoria['id']} AND destaque=0;";
-                            $produtos = mysqli_query($conexao, $sqlProdutos);
+                            $produtos = mysqli_query($con->getConexao(), $sqlProdutos);
                             while($produto = $produtos->fetch_array()) {?>
                                 <div class="col-md-2 produto">
                                     <a href="index.php?pagina=produto&id=<?php echo $produto['id']; ?>">

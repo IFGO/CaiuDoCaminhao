@@ -1,7 +1,6 @@
 <?php
-//ini_set("display_errors", "On");
-include "includes/funcoes/funcoes.php";
-$funcoes = new funcoes();
+    include "includes/funcoes/funcoes.php";
+    $funcoes = new funcoes();
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,10 +24,8 @@ $funcoes = new funcoes();
                     $("#logomarcasParceiros").animate({left: '-50%'}, 10000, animarLogomarcasParceiros);
                 }                
             });
-        </script>
-        <script type="text/javascript">              
             var ajax = function(){
-				//buscar valor digitado
+                //buscar valor digitado
                 var busca = $('#busProduto').val();
                 if(busca != "") {
                     $.ajax({                   
@@ -52,9 +49,6 @@ $funcoes = new funcoes();
                     document.getElementById("lista").innerHTML = "";
                 }
             };
-        </script>
-        
-        <script>
             $('#slideImg').cycle({
                 fx: 'scrollRight',
                 speed: 300,
@@ -62,22 +56,6 @@ $funcoes = new funcoes();
                 prev: '#ant'
             });
         </script>
-            
-        <style>
-            /* CSS PARA TESTE */
-            * {
-                margin: 0;
-            }
-
-
-            .col-md-2 img {
-                width: 100%;
-            }
-            .col-md-4 input[type="text"] {
-                width:90%;
-                margin-top:50px;
-            }
-        </style>
     </head>
     <body>
 
