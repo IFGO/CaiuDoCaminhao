@@ -1,11 +1,11 @@
-var ajax = function(){
+            var ajax = function(){
 				//buscar valor digitado
                 var busca = $('#busProduto').val();
                 if(busca != "") {
                     $.ajax({                   
                        url: 'pesquisar.php?',
                        type: 'GET',
-                       data: "param="+busca,
+                       data: "pesquisa="+busca,
                        dataType: 'json',
 
                     }).done(function(data){

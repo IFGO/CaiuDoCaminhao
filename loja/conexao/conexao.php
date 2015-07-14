@@ -10,6 +10,7 @@ class conexao {
     public static function getInstance(){
         if(self::$instance == null) {
             self::$instance = mysqli_connect(self::$db_host, self::$db_user, self::$db_pass, self::$db_name);
+            mysqli_set_charset(self::$instance, "utf8");
         }
         return self::$instance;
     }

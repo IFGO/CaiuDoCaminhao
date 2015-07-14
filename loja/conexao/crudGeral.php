@@ -13,7 +13,7 @@ class crud {
     }
 
     // funçao de inserçao, campos e seus respectivos valores como parametros		
-    public function inserir($getConexao, $campos, $valores) {
+    public function inserir($campos, $valores) {
         $this->sql_ins = "INSERT INTO " . $this->tabela . " ($campos) VALUES ($valores)";
         if (!$this->ins = mysqli_query(Conexao::getInstance(), $this->sql_ins)) {
             die("<center>Erro na inclusão " . '<br>Linha: ' . __LINE__ . "<br>" . mysqli_error() . "<br>
@@ -24,7 +24,7 @@ class crud {
     }
 
     // funçao de ediçao, campos com seus respectivos valores e o campo id que define a linha a ser editada como parametros
-    public function atualizar($getConexao,$camposvalores, $where = NULL) {
+    public function atualizar($camposvalores, $where = NULL) {
 //        $con = new conexao();
         if ($where) {
             $this->sql_upd = "UPDATE  " . $this->tabela . " SET $camposvalores WHERE $where";
@@ -42,7 +42,7 @@ class crud {
     }
 
     // funçao de exclusao, campo que define a linha a ser editada como parametro		
-    public function excluir($getConexao,$where = NULL) { 
+    public function excluir($where = NULL) { 
         if ($where) {
             $this->sql_sel = "SELECT * FROM " . $this->tabela . " WHERE $where";
             $this->sql_del = "DELETE FROM " . $this->tabela . " WHERE $where";

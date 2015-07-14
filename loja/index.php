@@ -1,6 +1,6 @@
 <?php
 require_once "includes/Requisicoes.php";
-require_once "conexao/Conexao.php";
+require_once "conexao/conexao.php";
 $requisicoes = new Requisicoes();
 ?>
 <!DOCTYPE html>
@@ -8,6 +8,7 @@ $requisicoes = new Requisicoes();
     <head>
         <meta charset="utf-8">
         <link rel="shortcut icon" href="<?php echo $requisicoes->requestURL();?>favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Caiu do Caminhão - Página Inicial</title>
         
         <link rel="stylesheet" href="<?php echo $requisicoes->requestURL(); ?>css/bootstrap-theme.min.css" type="text/css" />
@@ -15,6 +16,7 @@ $requisicoes = new Requisicoes();
         <link rel="stylesheet" href="<?php echo $requisicoes->requestURL(); ?>css/estilo.css" type="text/css" />
         <link rel="stylesheet" href="<?php echo $requisicoes->requestURL(); ?>css/jquery-ui.css" type="text/css" /> 
         
+        <script src="<?php echo $requisicoes->requestURL();?>js/bootstrap.min.js" > </script>
         <script src="<?php echo $requisicoes->requestURL();?>js/jquery.min.js" > </script>
         <script src="<?php echo $requisicoes->requestURL();?>js/jquery-ui.js"></script>
         <script src="<?php echo $requisicoes->requestURL();?>js/jquery.cycle.all.js"></script>
