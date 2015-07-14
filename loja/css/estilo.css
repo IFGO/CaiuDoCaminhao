@@ -1,15 +1,15 @@
 * {
-                margin: 0;
-            }
+    margin: 0;
+}
 
+.col-md-2 img {
+    width: 100%;
+}
 
-            .col-md-2 img {
-                width: 100%;
-            }
-            .col-md-4 input[type="text"] {
-                width:90%;
-                margin-top:50px;
-            }
+.col-md-4 input[type="text"] {
+    width:90%;
+    margin-top:50px;
+}
 
 header {
     height: 120px;
