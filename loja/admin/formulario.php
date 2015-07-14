@@ -2,7 +2,7 @@
     require_once '../conexao/conexao.php';
     require_once '../conexao/crudGeral.php';
 
-    $con = new conexao(); // instancia classe de conxao
+    $con = new Conexao(); // instancia classe de conxao
     $con->connect(); // abre conexao com o banco
     @$getId = $_GET['id'];  //pega id para ediçao caso exista
     if(@$getId){ //se existir recupera os dados e tras os campos preenchidos

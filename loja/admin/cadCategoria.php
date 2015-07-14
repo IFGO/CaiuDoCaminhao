@@ -1,9 +1,5 @@
 <?php
-require_once '../conexao/conexao.php';
 require_once '../conexao/crudGeral.php';
-
-$con = new conexao(); // instancia classe de conexao
-$con->connect(); // abre conexao com o banco    
 ?>
 
 
@@ -53,7 +49,7 @@ $con->connect(); // abre conexao com o banco
     </thead>
     <tbody>
         <?php
-        $consulta = mysqli_query($con->getConexao(), "SELECT * FROM categorias");
+        $consulta = mysqli_query(Conexao::getInstance(), "SELECT * FROM categorias");
         while ($campo = mysqli_fetch_array($consulta)) { // laço de repetiçao que vai trazer todos os resultados da consulta
             ?>
             <tr>
@@ -147,10 +143,9 @@ $con->connect(); // abre conexao com o banco
         <?php } ?>
     </tbody>
 </table>
-<?php $con->disconnect(); // fecha conexao com o banco  ?>
 <?php
 //apenas testando a conexao
-if ($con->connect() == true) {
+if (Conexao::getInstance() != null) {
     echo '<small><span class="glyphicon glyphicon-ok-sign"></span><strong class="text-success"> Conexão estável com o Banco de Dados</strong></small>';
 } else {
     echo '<small><span class="glyphicon glyphicon-remove-sign"></span><strong class="text-danger"> Sem conexão com o Banco de Dados</strong></small>';

@@ -1,8 +1,6 @@
 <?php
-    // CONEXÃO PARA TESTE
-    $conexao = mysqli_connect("localhost", "root", "", "caiudocaminhao");
     $sql = "SELECT * FROM produtos WHERE id = {$_GET['id']}";
-    $produto = mysqli_query($conexao, $sql)->fetch_array();
+    $produto = mysqli_query(Conexao::getInstance(), $sql)->fetch_array();
 ?>
 
 <div class="col-md-12">

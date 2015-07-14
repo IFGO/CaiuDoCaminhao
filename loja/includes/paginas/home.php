@@ -1,9 +1,9 @@
 <?php
-$func = new funcoes();
+$func = new Requisicoes();
      ?>
 <div class="col-md-12">
     <?php
-        $dir = $func->getCaminhoAbsoluto().'slideshow';
+        $dir = $func->requestPath().'slideshow';
         $arq = scandir($dir);
                
      ?>
@@ -31,7 +31,7 @@ $func = new funcoes();
     <div style="width: 100%; height: 50px; margin-left: auto; margin-right: auto; position: relative; top: 50%; overflow: hidden;">            
             <div id="logomarcasParceiros" style="position: absolute; height: 50px; left: -110%;">
                 <?php 
-                    $diretorio = $func->getCaminhoAbsoluto().'logomarcas';
+                    $diretorio = $func->requestPath().'logomarcas';
                     $arquivo = scandir($diretorio);
                     foreach($arquivo as $arquivo){  
                         if($arquivo != '.' and $arquivo != '..'){ ?>
@@ -45,9 +45,9 @@ $func = new funcoes();
     <div class="col-md-12">
     <br><br><h3>Confira nossos produtos em destaque:</h3>
     <?php
-        $conexao = mysqli_connect("localhost", "root", "", "caiudocaminhao");
+        
         $sql = "SELECT * FROM produtos WHERE destaque=1;";
-        $produtosDestaque = mysqli_query($conexao, $sql);
+        $produtosDestaque = mysqli_query(Conexao::getInstance(), $sql);
         if($produtosDestaque->num_rows > 0) {
             $arrayProdutos = array();
             while($destaque = $produtosDestaque->fetch_array()) {
@@ -70,15 +70,14 @@ $func = new funcoes();
     <h3>Você também pode gostar:</h3>
     <div id="accordion">
         <?php
-            $conexao = mysqli_connect("localhost", "root", "", "caiudocaminhao");
             $sql = "SELECT * FROM categorias ORDER BY nome;";
-            $categorias = mysqli_query($conexao, $sql);
+            $categorias = mysqli_query(Conexao::getInstance(), $sql);
                 while($categoria = $categorias->fetch_array()) { ?>
                     <h4> <?php echo $categoria['nome']; ?> </h4>
                     <div>
                         <?php 
                             $sqlProdutos = "SELECT * FROM produtos WHERE idCategoria= {$categoria['id']} AND destaque=0;";
-                            $produtos = mysqli_query($conexao, $sqlProdutos);
+                            $produtos = mysqli_query(Conexao::getInstance(), $sqlProdutos);
                             while($produto = $produtos->fetch_array()) {?>
                                 <div class="col-md-2 produto">
                                     <a href="index.php?pagina=produto&id=<?php echo $produto['id']; ?>">

@@ -2,7 +2,7 @@
     require_once '../conexao/conexao.php';
     require_once '../conexao/crudGeral.php';
 
-    $con = new conexao();  // instancia classe de conxao
+    $con = new Conexao();  // instancia classe de conxao
     $con->connect(); // abre conexao com o banco
 
     $crud = new crud('categorias'); // instancia classe com as operaçoes crud, passando o nome da tabela como parametro

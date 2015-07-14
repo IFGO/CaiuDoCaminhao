@@ -1,7 +1,7 @@
 <?php
-//ini_set("display_errors", "On");
-include "../includes/funcoes/funcoes.php";
-$funcoes = new funcoes();
+require_once "../includes/Requisicoes.php";
+require_once "../conexao/Conexao.php";
+$requisicoes = new Requisicoes();
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,11 +12,11 @@ $funcoes = new funcoes();
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <link rel="shortcut icon" href="<?php echo $funcoes->requestUrl(); ?>favicon.ico" />
-        <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/bootstrap-theme.min.css" type="text/css" />
-        <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/bootstrap.min.css" type="text/css" />        
-        <link rel="stylesheet" href="<?php echo $funcoes->requestUrl(); ?>css/estilo.css" type="text/css" />
-        <title>Administrador - Caiu do Caminhão</title>
+        <link rel="shortcut icon" href="<?php echo $requisicoes->requestURL(); ?>favicon.ico" />
+        <link rel="stylesheet" href="<?php echo $requisicoes->requestURL(); ?>css/bootstrap-theme.min.css" type="text/css" />
+        <link rel="stylesheet" href="<?php echo $requisicoes->requestURL(); ?>css/bootstrap.min.css" type="text/css" />        
+        <link rel="stylesheet" href="<?php echo $requisicoes->requestURL(); ?>css/estilo.css" type="text/css" />
+        <title>Caiu do Caminhão - Administração</title>
         <style>
             /* CSS PARA TESTE */
             * {
@@ -37,29 +37,30 @@ $funcoes = new funcoes();
         <header class="col-md-12">
             <div class="container">
                 <div class="col-md-4">
-                    <?php require $funcoes->requestModules("logotipo"); ?>
+                    <?php require $requisicoes->requestModules("logotipo"); ?>
                 </div>
                 <div class="col-md-4">
                     <?php // require $funcoes->requestModules("pesquisar"); ?>
                 </div>
                 <div class="col-md-4">
-                    <?php require $funcoes->requestModules("carrinho"); ?>
+                    <?php require $requisicoes->requestModules("carrinho"); ?>
                 </div>
             </div>
         </header>
         <nav class="col-md-12">                
             <div class="container">
-                <?php require $funcoes->requestModules("menuAdmin"); ?>
+                <?php require $requisicoes->requestModules("menuAdmin"); ?>
             </div>
         </nav>
         <div class="container">
             <main class="col-md-12">
-                <?php $funcoes->requestPageAdmin($_GET["pagina"]); ?>
+                <?php if(!isset($_GET["pagina"])) $_GET["pagina"] = null;
+                $requisicoes->requestAdminPage($_GET["pagina"]); ?>
             </main>
         </div>
         <footer class="col-md-12">
             <div class="container">
-                <?php require $funcoes->requestModules("grupo"); ?>
+                <?php require $requisicoes->requestModules("grupo"); ?>
             </div>
         </footer>
     </body>

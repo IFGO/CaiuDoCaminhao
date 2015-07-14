@@ -1,1 +1,3 @@
-<a href="index.php"><img src="<?php echo $funcoes->requestUrl(); ?>img/logo.png" /></a>
+<a href="index.php">
+    <img src="<?php echo $requisicoes->requestURL(); ?>img/logo.png" />
+</a>
