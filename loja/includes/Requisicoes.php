@@ -32,10 +32,10 @@ class Requisicoes {
     function requestAdminPage($page) {
         switch ($page) {
             case "categoria":
-                require $this->requestPath(). '/admin/cadCategoria.php';
+                require $this->requestPath(). '/admin/paginas/cadCategoria.php';
                 break;
             default : 
-                require $this->requestPath(). '/admin/admin.php';
+                require $this->requestPath(). '/admin/paginas/admin.php';
         }
     }
 
