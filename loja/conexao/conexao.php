@@ -6,7 +6,6 @@ class conexao {
     private static $db_pass = 'caminhao123'; // senha do usuario do banco
     private static $db_name = 'caminhao'; // nome do banco
     private static $instance = null;
-    private static $instance = null;
 
     public static function getInstance(){
         if(self::$instance == null) {
