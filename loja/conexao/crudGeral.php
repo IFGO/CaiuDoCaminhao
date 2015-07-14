@@ -14,15 +14,13 @@ class crud {
 
     // funçao de inserçao, campos e seus respectivos valores como parametros		
     public function inserir($getConexao, $campos, $valores) {
-        $con = new Conexao();
         $this->sql_ins = "INSERT INTO " . $this->tabela . " ($campos) VALUES ($valores)";
-        if (!$this->ins = mysqli_query($con->getConexao(), $this->sql_ins)) {
+        if (!$this->ins = mysqli_query(Conexao::getInstance(), $this->sql_ins)) {
             die("<center>Erro na inclusão " . '<br>Linha: ' . __LINE__ . "<br>" . mysqli_error() . "<br>
 				<a href='index.php'>Voltar ao Menu</a></center>");
         } else {
             print "<script>location='index.php';</script>";
         }
-        $con->disconnect();
     }
 
     // funçao de ediçao, campos com seus respectivos valores e o campo id que define a linha a ser editada como parametros
@@ -34,7 +32,7 @@ class crud {
             $this->sql_upd = "UPDATE  " . $this->tabela . " SET $camposvalores";
         }
 
-        if (!$this->upd = mysqli_query($getConexao, $this->sql_upd)) {
+        if (!$this->upd = mysqli_query(Conexao::getInstance(), $this->sql_upd)) {
             die("<center>Erro na atualização " . "<br>Linha: " . __LINE__ . "<br>" . mysqli_error() . "<br>
 				<a href='index.php'>Voltar ao Menu</a></center>");
         } else {
@@ -52,11 +50,11 @@ class crud {
             $this->sql_sel = "SELECT * FROM " . $this->tabela;
             $this->sql_del = "DELETE FROM " . $this->tabela;
         }
-        $sel = mysqli_query($getConexao, $this->sql_sel);
+        $sel = mysqli_query(Conexao::getInstance(), $this->sql_sel);
         $regs = mysqli_num_rows($sel);
         
         if ($regs > 0) {
-            if (!$this->del = mysqli_query($getConexao, $this->sql_del)) {
+            if (!$this->del = mysqli_query(Conexao::getInstance(), $this->sql_del)) {
                 die("<center>Erro na exclusão " . '<br>Linha: ' . __LINE__ . "<br>" . mysqli_error() . "<br>
 				<a href='index.php'>Voltar ao Menu</a></center>");
             } else {
