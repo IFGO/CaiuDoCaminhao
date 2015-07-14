@@ -1,15 +1,11 @@
 <?php
 class conexao {
 
-//    private static $db_host = '104.236.106.180'; // servidor
-//    private static $db_user = 'caminhao'; // usuario do banco
-//    private static $db_pass = 'caminhao123'; // senha do usuario do banco
-//    private static $db_name = 'caminhao'; // nome do banco
-//    private static $instance = null;
-    private static $db_host = 'localhost'; // servidor
-    private static $db_user = 'root'; // usuario do banco
-    private static $db_pass = ''; // senha do usuario do banco
-    private static $db_name = 'caiudocaminhao'; // nome do banco
+    private static $db_host = '104.236.106.180'; // servidor
+    private static $db_user = 'caminhao'; // usuario do banco
+    private static $db_pass = 'caminhao123'; // senha do usuario do banco
+    private static $db_name = 'caminhao'; // nome do banco
+    private static $instance = null;
     private static $instance = null;
 
     public static function getInstance(){
