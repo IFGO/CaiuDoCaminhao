@@ -1,5 +1,8 @@
+<div class="col-md-2">
+    <a href="index.php">Home</a>
+</div>
 <?php
-    $sql = "SELECT * FROM menu WHERE tipo = 2 ORDER BY nome ASC LIMIT 6";
+    $sql = "SELECT * FROM menu WHERE tipo = 2 ORDER BY nome ASC LIMIT 5";
     $categorias = mysqli_query(Conexao::getInstance(), $sql);
     
     while($categoria = $categorias->fetch_array()) { ?>

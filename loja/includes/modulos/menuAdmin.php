@@ -1,5 +1,5 @@
 <?php
-    $sql = "SELECT * FROM menu WHERE tipo = 1 ORDER BY nome ASC LIMIT 6";
+    $sql = "SELECT * FROM menu WHERE tipo = 1 ORDER BY nome ASC LIMIT 3";
     $categorias = mysqli_query(Conexao::getInstance(), $sql);
     
     while($categoria = $categorias->fetch_array()) { ?>
