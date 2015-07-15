@@ -9,7 +9,7 @@
     </div>
     <div class="col-md-6">
         <h1><?php echo $produto['nome'];?></h1>
-        <p>R$ <?php echo $produto['valor'];?><button>Comprar</button></p>
+        <p>R$ <?php echo $produto['valor'];?><?php echo '<button><a href="index.php?pagina=carrinho&acao=add&id='.$produto['id'].'">Comprar</a>'?></button></p>
         <p><?php echo $produto['descricao'];?></p>
     </div>
 </div>
