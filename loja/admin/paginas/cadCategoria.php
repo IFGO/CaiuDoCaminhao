@@ -16,7 +16,6 @@ $form = new formCategorias();
         });
         $("#btnExcluir").click(function () {
 
-
             var parent = "";
             var array = new Array();
 
@@ -36,7 +35,6 @@ $form = new formCategorias();
             });
 
             //CONCATENA OS ID'S SEPARADOS POR VIRGULAS
-//            var lista_ids = escape(array.join(','));
             var lista_ids = array.join(',');
             $.ajax({
                 type: 'POST',
@@ -46,7 +44,7 @@ $form = new formCategorias();
                     opt: "excluir"
                 },
                 success: function (data) {
-                    $("#menssage").html("<p class='success text-success'>"+data+"</p>");
+                    $("#mensagem").html("<div class='success text-success mensagem-sucesso'>" + data + "</div>");
                 }
             });
         });
@@ -64,27 +62,26 @@ $form = new formCategorias();
                     opt: "cadastro"
                 },
                 success: function (data) {
-                    $("#menssage").html("<p class='success text-success'>"+data+"</p>");
+                    $("#mensagem").html("<div class='success text-success mensagem-sucesso'>" + data + "</div>");
                 }
             });
         });
     });
 </script>
 
-<div class="comands col-md-12" id="menssage">
-    
-</div>            
-<div class="comands col-md-6">            
-    <div class="col-md-2">
+<div class="" id="mensagem"></div>
+
+<div class="comands col-md-12">            
+    <div class="col-md-1">
+        <a  class="btn btn-small btn-danger" href="#" id="btnExcluir"><span class="glyphicon glyphicon-check"></span> Excluir</a>
+    </div>
+    <div class="col-md-1">
         <a class="btn btn-mini btn-success" data-rel="popup" href="#myPopup-new"><span class="glyphicon glyphicon-plus-sign"></span> Novo</a>
 
-        <div data-role="popup" id="myPopup-new" class="ui-content" data-dismissible="false" style="width:600px;height: 600px; left: 50%;">
+        <div data-role="popup" id="myPopup-new" class="ui-content" data-dismissible="false" style="width:600px;height: 600px; left: -50%;">
             <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>            
             <?php $form->exibir("btnCadastrar"); ?>
         </div>
-    </div>
-    <div class="col-md-2">
-        <a  class="btn btn-small btn-danger" href="#" id="btnExcluir"><span class="glyphicon glyphicon-check"></span> Excluir</a>
     </div>
 </div>
 <table class="table table-bordered table-hover">
@@ -93,15 +90,13 @@ $form = new formCategorias();
             <th>Nome</th>
             <th>Descrição</th>
             <th style="text-align: center">Editar</th>
-            <th style="text-align: center">Excluir</th>
-            <th style="text-align: center">
-                <span class="glyphicon glyphicon-check"></span>
-            </th>
+            <th style="text-align: center; width: 90px;"><span class="glyphicon glyphicon-check"></span> Excluir</th>
         </tr>
     </thead>
     <tbody>
         <?php
-        $consulta = mysqli_query(Conexao::getInstance(), "SELECT c.*, m.nome AS nome_menu, m.alias AS alias_menu  FROM categorias c INNER JOIN menu m ON c.menu_relacionado=m.id");
+        $query = "SELECT c.*, (select nome from menu where id = c.menu_relacionado) AS nome_menu, (select alias from menu where id = c.menu_relacionado) AS alias_menu  FROM categorias c ";
+        $consulta = mysqli_query(Conexao::getInstance(), $query);
         while ($campo = mysqli_fetch_array($consulta)) { // laço de repetiçao que vai trazer todos os resultados da consulta
             ?>
             <tr>
@@ -114,7 +109,7 @@ $form = new formCategorias();
                 <td style="text-align: center">
                     <div class="editar">
                         <a href="#myPopup-<?php echo $campo['id']; ?>" data-rel="popup" class="">
-                            <div class="edit" id="idCat-<?php echo $campo['id']; //pega o campo ID para a ediçao                         ?>">
+                            <div class="edit" id="idCat-<?php echo $campo['id']; //pega o campo ID para a ediçao                             ?>">
                                 <span class="glyphicon glyphicon-edit"></span>
                             </div>
                         </a>
@@ -124,50 +119,47 @@ $form = new formCategorias();
                             <?php $form->exibir("bntEdit", $campo['id'], $campo['nome'], $campo['descricao'], $campo['menu_relacionado'], $campo['nome_menu']); ?>
 
                             <?php
-                            $classe = 'class="success text-success"';
-                            echo "<script>
-    $(document).ready(function () {
-$('#myPopup-" . $campo['id'] . " .nome').keyup(function () {
-            $('#myPopup-" . $campo['id'] . " .nomeHidden').val($('#myPopup-" . $campo['id'] . " .nome').val());
-        });
-        $('#myPopup-" . $campo['id'] . " .descricao').keyup(function () {
-            $('#myPopup-" . $campo['id'] . " .descricaoHidden').val($('#myPopup-" . $campo['id'] . " .descricao').val());
-        });
-        $('#myPopup-" . $campo['id'] . " .menurel').change(function () {
-            $('#myPopup-" . $campo['id'] . " .menurelHidden').val($('#myPopup-" . $campo['id'] . " .menurel :selected').val());
-        });    
+                            $classe = 'class="success text-success mensagem-sucesso"';
+                            echo "
+                                <script>
+                                    $(document).ready(function () {
+                                        $('#myPopup-" . $campo['id'] . " .nome').keyup(function () {
+                                            $('#myPopup-" . $campo['id'] . " .nomeHidden').val($('#myPopup-" . $campo['id'] . " .nome').val());
+                                        });
+                                        $('#myPopup-" . $campo['id'] . " .descricao').keyup(function () {
+                                            $('#myPopup-" . $campo['id'] . " .descricaoHidden').val($('#myPopup-" . $campo['id'] . " .descricao').val());
+                                        });
+                                        $('#myPopup-" . $campo['id'] . " .menurel').change(function () {
+                                            $('#myPopup-" . $campo['id'] . " .menurelHidden').val($('#myPopup-" . $campo['id'] . " .menurel :selected').val());
+                                        });    
 
-        $('#bntEdit-" . $campo['id'] . "').click(function (e) {
-            e.preventDefault();
-                $.ajax({
-                    type: 'POST',
-                    url: 'paginas/crud/crudCategorias.php',
-                data: {
-                    id: $(this).parent().siblings('.idHidden').val(),
-                    nome: $(this).parent().siblings('.nomeHidden').val(),
-                    descricao: $(this).parent().siblings('.descricaoHidden').val(),
-                    menurel: $(this).parent().siblings('.menurelHidden').val(),
-                    opt: 'editar'
-                },
-                success: function (data) {
-                    $('#menssage').html('<p ".$classe.">'+data+'</p>');
-                }
-            });
-        });
-    });
-</script>";
+                                        $('#bntEdit-" . $campo['id'] . "').click(function (e) {
+                                            e.preventDefault();
+                                            $.ajax({
+                                                type: 'POST',
+                                                url: 'paginas/crud/crudCategorias.php',
+                                                data: {
+                                                    id: $(this).parent().siblings('.idHidden').val(),
+                                                    nome: $(this).parent().siblings('.nomeHidden').val(),
+                                                    descricao: $(this).parent().siblings('.descricaoHidden').val(),
+                                                    menurel: $(this).parent().siblings('.menurelHidden').val(),
+                                                    opt: 'editar'
+                                                },
+                                                success: function (data) {
+                                                    $('#mensagem').html('<div " . $classe . ">'+data+'</div>');
+                                                }
+                                            });
+                                        });
+                                    });
+                                </script>
+                                ";
                             ?>
 
                         </div>
                     </div>
                 </td>
                 <td style="text-align: center">
-                    <a href="paginas/excluir.php?id=<?php echo $campo['id'];  //pega o campo ID para a exclusao                         ?>" id="excluir">
-                        <span class="glyphicon glyphicon-trash"></span>
-                    </a>
-                </td>
-                <td style="text-align: center">
-                    <input class="checkbox" type="checkbox" name="excluir[]" value="<?php echo $campo['id']; ?>" /> 
+                    <input class="checkbox" type="checkbox" name="excluir[]" value="<?php echo $campo['id']; ?>" /> <span class="sep-id"> | id:<?php echo $campo['id']; ?></span> 
                 </td>
             </tr>
         <?php } ?>

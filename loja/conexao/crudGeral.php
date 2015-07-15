@@ -19,7 +19,7 @@ class crud {
             die("<center>Erro na inclusão " . '<br>Linha: ' . __LINE__ . "<br>" . mysqli_error() . "<br>
 				<a href='index.php'>Voltar ao Menu</a></center>");
         } else {
-//            print "<script>location='index.php';</script>";
+            print "<center>Registro Salvo com Sucesso!</center>";
         }
     }
 
@@ -36,7 +36,7 @@ class crud {
             die("<center>Erro na atualização " . "<br>Linha: " . __LINE__ . "<br>" . mysqli_error() . "<br>
 				<a href='index.php'>Voltar ao Menu</a></center>");
         } else {
-            print "<center>Registro Atualizado com Sucesso!<br><a href='index.php'>Voltar ao Menu</a></center>";
+            print "<center>Registro Atualizado com Sucesso!</center>";
         }
 //        $con->disconnect();
     }
@@ -58,10 +58,10 @@ class crud {
                 die("<center>Erro na exclusão " . '<br>Linha: ' . __LINE__ . "<br>" . mysqli_error() . "<br>
 				<a href='index.php'>Voltar ao Menu</a></center>");
             } else {
-                print "<center>Registro Excluído com Sucesso!<br><a href='index.php'>Voltar ao Menu</a></center>";
+                print "<center>Registro Excluído com Sucesso!</center>";
             }
         } else {
-            print "<center>Registro Não encontrado!<br><a href='index.php'>Voltar ao Menu</a></center>";
+            print "<center>Registro Não encontrado!</center>";
         }
     }
 
