@@ -1,5 +1,5 @@
 <?php 
-    require_once "conexao/conexao.php";
+    require_once "../conexao/conexao.php";
     session_start();
     
     $login = $_REQUEST['usuario']; 

@@ -1,4 +1,5 @@
 <?php
+    require_once "../conexao/sql.php";
     $categorias = mysqli_query(Conexao::getInstance(), Sql::getSqlMenuAdmin());
     
     while($categoria = $categorias->fetch_array()) { ?>
