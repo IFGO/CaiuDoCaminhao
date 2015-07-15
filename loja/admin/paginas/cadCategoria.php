@@ -78,7 +78,7 @@ $form = new formCategorias();
     <div class="col-md-1">
         <a class="btn btn-mini btn-success" data-rel="popup" href="#myPopup-new"><span class="glyphicon glyphicon-plus-sign"></span> Novo</a>
 
-        <div data-role="popup" id="myPopup-new" class="ui-content" data-dismissible="false" style="width:600px;height: 600px; left: 50%;">
+        <div data-role="popup" id="myPopup-new" class="ui-content" data-dismissible="false" style="width:600px;height: 600px; left: -50%;">
             <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>            
             <?php $form->exibir("btnCadastrar"); ?>
         </div>
