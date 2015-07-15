@@ -46,7 +46,7 @@ $form = new formCategorias();
                     opt: "excluir"
                 },
                 success: function (data) {
-                    alert(data);
+                    $("#menssage").html("<p class='success text-success'>"+data+"</p>");
                 }
             });
         });
@@ -64,14 +64,16 @@ $form = new formCategorias();
                     opt: "cadastro"
                 },
                 success: function (data) {
-                    alert(data);
+                    $("#menssage").html("<p class='success text-success'>"+data+"</p>");
                 }
             });
         });
     });
 </script>
 
-
+<div class="comands col-md-12" id="menssage">
+    
+</div>            
 <div class="comands col-md-6">            
     <div class="col-md-2">
         <a class="btn btn-mini btn-success" data-rel="popup" href="#myPopup-new"><span class="glyphicon glyphicon-plus-sign"></span> Novo</a>
@@ -122,18 +124,34 @@ $form = new formCategorias();
                             <?php $form->exibir("bntEdit", $campo['id'], $campo['nome'], $campo['descricao'], $campo['menu_relacionado'], $campo['nome_menu']); ?>
 
                             <?php
+                            $classe = 'class="success text-success"';
                             echo "<script>
     $(document).ready(function () {
+$('#myPopup-" . $campo['id'] . " .nome').keyup(function () {
+            $('#myPopup-" . $campo['id'] . " .nomeHidden').val($('#myPopup-" . $campo['id'] . " .nome').val());
+        });
+        $('#myPopup-" . $campo['id'] . " .descricao').keyup(function () {
+            $('#myPopup-" . $campo['id'] . " .descricaoHidden').val($('#myPopup-" . $campo['id'] . " .descricao').val());
+        });
+        $('#myPopup-" . $campo['id'] . " .menurel').change(function () {
+            $('#myPopup-" . $campo['id'] . " .menurelHidden').val($('#myPopup-" . $campo['id'] . " .menurel :selected').val());
+        });    
+
         $('#bntEdit-" . $campo['id'] . "').click(function (e) {
             e.preventDefault();
-//            $('#myPopup-" . $campo['id'] . " .formulario').submit(function () {
                 $.ajax({
                     type: 'POST',
-                    url: 'formulario?acao=edit',
-                    data: {
-                        id: $(this).parent().siblings('.idEdit-" . $campo['id'] . "').val()
-                    }
-//                });
+                    url: 'paginas/crud/crudCategorias.php',
+                data: {
+                    id: $(this).parent().siblings('.idHidden').val(),
+                    nome: $(this).parent().siblings('.nomeHidden').val(),
+                    descricao: $(this).parent().siblings('.descricaoHidden').val(),
+                    menurel: $(this).parent().siblings('.menurelHidden').val(),
+                    opt: 'editar'
+                },
+                success: function (data) {
+                    $('#menssage').html('<p ".$classe.">'+data+'</p>');
+                }
             });
         });
     });

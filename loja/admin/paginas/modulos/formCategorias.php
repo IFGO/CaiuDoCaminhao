@@ -35,7 +35,7 @@ class formCategorias {
                     ?>
                     <input type="submit" name="cadastrar" value="Cadastrar"  id="<?php echo $class; ?>" />
                 <?php } else { ?>
-                    <input type="submit" name="editar" value="Editar"  id="<?php echo $class; ?>" />    
+                    <input type="submit" name="editar" value="Editar"  id="<?php echo $class."-".$idCampo; ?>" />    
         <?php } ?>
                 <!--<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Go Back</a>-->
             </div>
