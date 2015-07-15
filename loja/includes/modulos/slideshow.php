@@ -1,6 +1,6 @@
 <?php
     $func = new Requisicoes();
-    $dir = $func->requestPath().'slideshow';
+    $dir = $func->requestPath().'imagens/slideshow';
     $arq = scandir($dir);              
 ?>
 
@@ -13,7 +13,7 @@
         <?php
         foreach($arq as $arq){  
             if($arq != '.' and $arq != '..'){ ?>                
-                <img src="slideshow/<?php echo $arq; ?>" alt="<?php echo $arq; ?>" /> 
+                <img src="imagens/slideshow/<?php echo $arq; ?>" alt="<?php echo $arq; ?>" /> 
             <?php }
         } ?>
     </div>    

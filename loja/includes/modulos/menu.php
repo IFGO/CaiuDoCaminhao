@@ -13,8 +13,7 @@
         }
     }
     
-    $sql = "SELECT * FROM menu WHERE tipo = 2 ORDER BY nome ASC LIMIT 5";
-    $categorias = mysqli_query(Conexao::getInstance(), $sql);
+    $categorias = mysqli_query(Conexao::getInstance(), Sql::getSqlMenu());
     
     while($categoria = $categorias->fetch_array()) { ?>
         <div class="col-md-2 <?php echo verificarAtivo($categoria['link']); ?>">

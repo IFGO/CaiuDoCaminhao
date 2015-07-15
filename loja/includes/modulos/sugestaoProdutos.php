@@ -2,14 +2,13 @@
 <h3>Outros produtos</h3>
 <div id="accordion">
     <?php
-        $sql = "SELECT * FROM categorias ORDER BY nome;";
-        $categorias = mysqli_query(Conexao::getInstance(), $sql);
+        
+        $categorias = mysqli_query(Conexao::getInstance(), Sql::getSqlCategorias());
         while($categoria = $categorias->fetch_array()) { ?>
             <h4> <?php echo $categoria['nome']; ?> </h4>
             <div>
                 <?php 
-                    $sqlProdutos = "SELECT * FROM produtos WHERE idCategoria= {$categoria['id']} AND destaque=0;";
-                    $produtos = mysqli_query(Conexao::getInstance(), $sqlProdutos);
+                    $produtos = mysqli_query(Conexao::getInstance(), Sql::getSqlProdutosSemDestaque($categoria['id']));
                     while($produto = $produtos->fetch_array()) {?>
                         <div class="col-md-3 produto">
                             <a href="index.php?pagina=produto&id=<?php echo $produto['id']; ?>">

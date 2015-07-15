@@ -1,6 +1,5 @@
 <?php
-    $sql = "SELECT * FROM categorias WHERE id = {$_GET['id']}";
-    $categoria = mysqli_query(Conexao::getInstance(), $sql)->fetch_array();
+    $categoria = mysqli_query(Conexao::getInstance(), Sql::getSqlCategoria($_GET['id']))->fetch_array();
 ?>
 
 <div class="col-md-12 categoria">
@@ -8,8 +7,7 @@
     <p><?php echo $categoria['descricao'];?></p>
     <?php
         
-        $sql = "SELECT * FROM produtos WHERE idCategoria = {$_GET['id']}";
-        $produtos = mysqli_query(Conexao::getInstance(), $sql);
+        $produtos = mysqli_query(Conexao::getInstance(), Sql::getSqlCategoriaProduto($_GET['id']));
         while($produto = $produtos->fetch_array()) { ?>
             <div class="col-md-2 produto">
                 <a href="index.php?pagina=produto&id=<?php echo $produto['id']; ?>">

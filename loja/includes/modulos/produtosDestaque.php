@@ -1,8 +1,8 @@
 <div class="col-md-12" style="padding:0;">
     <h2 id="chamada">As melhores ofertas você encontra aqui!</h1>
     <?php
-        $sql = "SELECT * FROM produtos WHERE destaque=1;";
-        $produtosDestaque = mysqli_query(Conexao::getInstance(), $sql);
+        
+        $produtosDestaque = mysqli_query(Conexao::getInstance(), Sql::getSqlProdutosDestaque());
         if($produtosDestaque->num_rows > 0) {
             $arrayProdutos = array();
             while($destaque = $produtosDestaque->fetch_array()) {

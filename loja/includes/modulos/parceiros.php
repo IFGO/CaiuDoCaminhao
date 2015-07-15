@@ -4,11 +4,11 @@
         <div id="logomarcasParceiros" style="position: absolute; height: 50px; left: -110%;">
             <?php 
                 $requisicoes = new Requisicoes();
-                $diretorio = $requisicoes->requestPath().'logomarcas';
+                $diretorio = $requisicoes->requestPath().'imagens/logomarcas';
                 $arquivo = scandir($diretorio);
                 foreach($arquivo as $arquivo){  
                     if($arquivo != '.' and $arquivo != '..'){ ?>
-                        <a href="#" style="margin-right: 10px;"> <img src="logomarcas/<?php echo $arquivo; ?>" height="50px"> </a>
+                        <a href="#" style="margin-right: 10px;"> <img src="imagens/logomarcas/<?php echo $arquivo; ?>" height="50px"> </a>
                     <?php }
                 }
             ?>

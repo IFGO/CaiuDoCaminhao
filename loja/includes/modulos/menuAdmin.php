@@ -1,6 +1,5 @@
 <?php
-    $sql = "SELECT * FROM menu WHERE tipo = 1 ORDER BY nome ASC LIMIT 3";
-    $categorias = mysqli_query(Conexao::getInstance(), $sql);
+    $categorias = mysqli_query(Conexao::getInstance(), Sql::getSqlMenuAdmin());
     
     while($categoria = $categorias->fetch_array()) { ?>
         <div class="col-md-4" style="text-align: center;">

@@ -1,6 +1,7 @@
 <?php
 require_once "includes/Requisicoes.php";
 require_once "conexao/conexao.php";
+require_once "conexao/sql.php";
 $requisicoes = new Requisicoes();
 ?>
 <!DOCTYPE html>
