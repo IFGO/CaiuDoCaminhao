@@ -30,7 +30,6 @@ if ($_POST['opt'] == "cadastro") {
         $valores .= "'" . $_POST['menurel'] . "'";
     }
     $crud->inserir($campos, $valores);
-    echo "Categoria salva com sucesso!";
 }
 
 if ($_POST['opt'] == "excluir") {
@@ -39,7 +38,6 @@ if ($_POST['opt'] == "excluir") {
         $ids .= $_POST['id'];
         $crud->excluir("ID IN($ids)");
     }
-    echo "Excluido com sucesso!";
 }
 
 if ($_POST['opt'] == "editar") {
