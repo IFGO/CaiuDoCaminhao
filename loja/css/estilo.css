@@ -7,15 +7,45 @@
 }
 
 .col-md-4 input[type="text"] {
-    width:90%;
-    margin-top:50px;
+    margin-top:25px;
 }
 
 header {
+    border-top: solid 3px #EC3237;
     height: 120px;
     background: #90C748;
     padding-top: 15px;
     z-index:999;
+}
+
+#lista {
+    background: #FFF;
+    width: 100%;
+    float:left;
+    box-shadow: #555 3px 3px 5px;
+}
+
+#lista div{
+    border-top: solid 1px #ccc;
+    padding: 5px 5px;
+    width: 100%;
+    float:left;
+}
+
+#lista div img{
+    width: 50px;
+    float:left;
+    margin-right: 5px;
+}
+
+#lista div a {
+    color: #2B2B2B;
+    font-weight:bold;
+}
+
+#lista div a:hover {
+    color: #EC3237;
+    text-decoration:none;
 }
 
 nav {
@@ -38,7 +68,11 @@ nav div a{
     padding-bottom: 5px;
 }
 
-nav div a:hover{
+nav div {
+    padding: 0!important;
+}
+
+nav div a:hover, nav div .active{
     background: #EC3237;
     color: #fff;
     text-decoration: none;
@@ -48,6 +82,44 @@ main {
     min-height: 500px!important;
     padding-top:15px;
     padding-bottom:15px;
+}
+
+#slideHomeButton {
+    position:absolute;
+    z-index: 999;
+    bottom:0;
+    right:0;
+}
+
+#chamada {
+    background: #EC3237;
+    padding: 15px 0;
+    text-align:center;
+    color: #FFF;
+    margin: 10px 0 0 0 ;
+}
+
+#parceiros {
+    margin-bottom: 25px;
+    position:relative;
+    float:left;
+    width: 100%;
+}
+
+.outros {
+    margin-top: 50px;
+    width: 50%;
+    position:relative;
+    float:left;
+}
+
+#sobre {
+    margin-top: 50px;
+    width: 45%;
+    text-align:justify;
+    position:relative;
+    float:left;
+    padding-left: 5%;
 }
 
 .categoria h1 {

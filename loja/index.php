@@ -45,8 +45,8 @@ $requisicoes = new Requisicoes();
                 <?php require $requisicoes->requestModules("menu"); ?>
             </div>
         </nav>
-        <div class="container">
-            <main class="col-md-12">
+        <div class="container" style="padding:0;">
+            <main class="col-md-12" style="padding:0;">
                <?php 
                     if(!isset($_GET["pagina"])) $_GET["pagina"] = null;
                     $requisicoes->requestPage($_GET["pagina"]); 

@@ -1,2 +1,2 @@
-<input type="text" id="busProduto" onkeyup="ajax()" />   
-<div style="background:white;" id="lista"></div>             
+<input type="text" class="form-control" id="busProduto" onkeyup="ajax()" placeholder="O que você está procurando?" />   
+<div id="lista"></div>             
