@@ -3,7 +3,9 @@
 
 include_once "modulos/formProdutos.php";
 $form = new formProdutos();
+$requisicoes = new Requisicoes();
 ?>
+
 <script src="<?php echo $requisicoes->requestURL();?>js/cadProdutos.js" > </script>
 <h2>Produtos</h2>
 <p>Gerencie os produtos da loja</p>

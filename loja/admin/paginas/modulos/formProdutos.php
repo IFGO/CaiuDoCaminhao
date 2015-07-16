@@ -43,7 +43,7 @@ class formProdutos {
                 <input type="hidden" name="nomeHidden" class="nomeHidden" value="<?php echo $nome ?>" />
                 <input type="hidden" name="descricaoHidden" class="descricaoHidden" value="<?php echo $descricao ?>" />
                 <input type="hidden" name="valorHidden" class="valorHidden" value="<?php echo $valor ?>" />
-                <input type="hidden" name="linkimgHidden" class="imagemHidden" value="<?php echo $imagem ?>" />
+                <input type="hidden" name="linkimgHidden" class="linkimgHidden" value="<?php echo $imagem ?>" />
                 <input type="hidden" name="imagemHidden" class="imagemHidden" value="<?php echo $imagem ?>" />
                 <input type="hidden" name="destaqueHidden" class="destaqueHidden" value="<?php echo $destaque ?>" />
                 <input type="hidden" name="categoriaHidden" class="categoriaHidden" value="<?php echo $idCat ?>" />

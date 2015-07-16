@@ -7,13 +7,15 @@ $requisicoes = new Requisicoes();
 $crud = new crud("produtos");
 $imagemUp = $requisicoes->getNomeArquivoUpload();
 
-
+if(empty($imagemUp)||$imagemUp==null){
+    $imagemUp = $_POST['linkimg'];
+}
 if ($_POST['opt'] == "cadastro") {
     $campos = "";
     $valores = "";
 
-    $campos .= ("nome,descricao,valor,foto,destaque");
-    $valores .= "'" . $_POST['nome'] . "','" . $_POST['descricao'] . "'," . $_POST['valor'] . ",'" . $imagemUp . "'," . $_POST['destaque'];
+    $campos .= ("nome,descricao,valor,foto,destaque,idCategoria");
+    $valores .= "'" . $_POST['nome'] . "','" . $_POST['descricao'] . "'," . $_POST['valor'] . ",'" . $imagemUp . "'," . $_POST['destaque']. "," . $_POST['categoria'];
 
     $crud->inserir($campos, $valores);
 }
