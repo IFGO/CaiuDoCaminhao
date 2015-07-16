@@ -199,6 +199,9 @@ input[type="radio"], input[type="checkbox"] {
     outline: 0!important; 
     z-index: 1; 
 }
+span.opt {
+  margin-left: 11px;
+}
 .ui-checkbox, .ui-radio {
     margin: 0 !important;
     position: relative;

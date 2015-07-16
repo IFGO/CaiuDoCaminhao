@@ -49,7 +49,7 @@ $(document).ready(function () {
             var lista_ids = array.join(',');
             $.ajax({
                 type: 'POST',
-                url: 'paginas/crud/crudCategorias.php',
+                url: 'paginas/crud/crudProdutos.php',
                 data: {
                     id: lista_ids,
                     opt: "excluir"
