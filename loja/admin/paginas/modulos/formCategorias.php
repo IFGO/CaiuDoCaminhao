@@ -5,8 +5,7 @@ class formCategorias {
     public function exibir($class, $idCampo = null, $nome = null, $descricao = null, $idMenu = null, $menu = null) {
         ?>
         <?php
-        $query = "SELECT * FROM menu WHERE tipo = 2";
-        $consulta = mysqli_query(Conexao::getInstance(), $query);
+        $consulta = Conexao::getQuery(Sql::getSqlMenuCadAdmin());
         ?>
         <form action="" method="post" class="formulario">
             <div data-role="main">

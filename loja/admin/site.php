@@ -2,6 +2,7 @@
 //ini_set("display_errors", "On");
 require_once "../includes/Requisicoes.php";
 require_once "../conexao/Conexao.php";
+include_once "../conexao/sql.php";
 $requisicoes = new Requisicoes();
 ?>
 

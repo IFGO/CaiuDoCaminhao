@@ -5,8 +5,7 @@ class formProdutos {
     public function exibir($class, $idCampo = null, $nome = null, $descricao = null, $idCat = null, $valor = null, $imagem = null, $cat = null, $destaque = null) {
         ?>
         <?php
-        $query = "SELECT * FROM categorias";
-        $consulta = mysqli_query(Conexao::getInstance(), $query);
+        $consulta = Conexao::getQuery(Sql::getSqlCategorias());
         ?>
         <form action="paginas/upload.php" method="post" class="formulario" enctype="multipart/form-data">
             <div data-role="main">

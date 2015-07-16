@@ -8,6 +8,10 @@
         private static $produtosDestaque = "SELECT * FROM produtos WHERE destaque=1;";
         private static $categorias = "SELECT * FROM categorias ORDER BY nome;";
         private static $produtosSemDestaque = "SELECT * FROM produtos WHERE idCategoria= ";
+        private static $produtosAdmin = "SELECT p.*, (select nome from categorias where id = p.idCategoria) AS nome_categoria  FROM produtos p";
+        private static $categoriasAdmin = "SELECT c.*, (select nome from menu where id = c.menu_relacionado) AS nome_menu, (select alias from menu where id = c.menu_relacionado) AS alias_menu  FROM categorias c";
+        private static $menuCadAdmin = "SELECT * FROM menu WHERE tipo = 2 ORDER BY nome ASC";
+        
 
         public static function getSqlProduto($id) {
             return self::$produto.$id;
@@ -39,6 +43,15 @@
         
         public static function getSqlProdutosSemDestaque($id) {
             return self::$produtosSemDestaque.$id." AND destaque=0;";
+        }
+        public static function getProdutosAdmin() {
+            return self::$produtosAdmin;
+        }
+        public static function getCategoriasAdmin() {
+            return self::$categoriasAdmin;
+        }
+        public static function getSqlMenuCadAdmin() {
+            return self::$menuCadAdmin;
         }
     }
 ?>

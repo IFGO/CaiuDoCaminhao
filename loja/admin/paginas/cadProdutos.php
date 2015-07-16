@@ -1,6 +1,4 @@
 <?php
-
-
 include_once "modulos/formProdutos.php";
 $form = new formProdutos();
 $requisicoes = new Requisicoes();
@@ -36,8 +34,7 @@ $requisicoes = new Requisicoes();
     </thead>
     <tbody>
         <?php
-        $query = "SELECT p.*, (select nome from categorias where id = p.idCategoria) AS nome_categoria  FROM produtos p";
-        $consulta = mysqli_query(Conexao::getInstance(), $query);
+        $consulta = Conexao::getQuery(Sql::getProdutosAdmin());
         while ($campo = mysqli_fetch_array($consulta)) { // laço de repetiçao que vai trazer todos os resultados da consulta
             ?>
             <tr>

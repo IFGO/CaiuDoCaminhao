@@ -35,8 +35,7 @@
     </thead>
     <tbody>
         <?php
-        $query = "SELECT c.*, (select nome from menu where id = c.menu_relacionado) AS nome_menu, (select alias from menu where id = c.menu_relacionado) AS alias_menu  FROM categorias c ";
-        $consulta = mysqli_query(Conexao::getInstance(), $query);
+        $consulta = Conexao::getQuery(Sql::getCategoriasAdmin());
         while ($campo = mysqli_fetch_array($consulta)) { // laço de repetiçao que vai trazer todos os resultados da consulta
             ?>
             <tr>
