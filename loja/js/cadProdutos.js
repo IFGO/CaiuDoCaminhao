@@ -71,6 +71,7 @@ $(document).ready(function () {
                     descricao: $(".descricaoHidden").val(),
                     valor: $(".valorHidden").val(),
                     imagem: $(".imagemHidden").val(),
+                    linkimg: $(".linkimgHidden").val(),
                     destaque: $(".destaqueHidden").val(),
                     categoria: $(".categoriaHidden").val(),
                     opt: "cadastro"
