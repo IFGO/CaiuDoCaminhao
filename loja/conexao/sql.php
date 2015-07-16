@@ -4,7 +4,7 @@
         private static $categoria = "SELECT * FROM categorias WHERE id = ";
         private static $categoriaProduto = "SELECT * FROM produtos WHERE idCategoria = ";
         private static $menu = "SELECT * FROM menu WHERE tipo = 2 ORDER BY nome ASC LIMIT 5";
-        private static $menuAdmin = "SELECT * FROM menu WHERE tipo = 1 ORDER BY nome ASC LIMIT 3";
+        private static $menuAdmin = "SELECT * FROM menu WHERE tipo = 1 ORDER BY ordem ASC LIMIT 3";
         private static $produtosDestaque = "SELECT * FROM produtos WHERE destaque=1;";
         private static $categorias = "SELECT * FROM categorias ORDER BY nome;";
         private static $produtosSemDestaque = "SELECT * FROM produtos WHERE idCategoria= ";
