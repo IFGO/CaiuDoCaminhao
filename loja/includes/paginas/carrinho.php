@@ -46,29 +46,26 @@
 ?>
 
 <div class="col-md-12">
-    <table>
-        <caption>Carrinho de Compras</caption>
+    
+    <table class="table table-striped">
+        <h1 style="font-size:32px;">Carrinho de Compras</h1>
+        <p>Confira os produtos que você escolheu</p>
         <thead>
             <tr>
-                <th width="244">Produto</th>
-                <th width="79">Quantidade</th>
-                <th width="89">valor</th>
-                <th width="100">SubTotal</th>
-                <th width="64">Remover</th>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Valor</th>
+                <th>SubTotal</th>
+                <th>Remover</th>
             </tr>
         </thead>
         <form action="index.php?pagina=carrinho&acao=up" method="post">
-        <tfoot>
-            <tr>
-                <td colspan="5"><input type="submit" value="Atualizar Carrinho" /></td>
-                <tr>
-                <td colspan="5"><button><a href="index.php">Continuar Comprando</a></button></td>
-        </tfoot>
+
 
         <tbody>
             <?php
                 if(count($_SESSION['carrinho']) == 0){
-                    echo '<tr><td colspan="5">Nao ha produto no carrinho</td></tr>';
+                    echo '<tr><td colspan="5">Não existem produtos no seu carrinho</td></tr>';
                 }else{
                     $total = 0;
                     foreach($_SESSION['carrinho'] as $id => $qtd){
@@ -86,7 +83,7 @@
                             <td><input type="text" size="3" name="prod['.$id.']" value="'.$qtd.'" /></td>
                             <td>R$ '.$valor.'</td>
                             <td>R$ '.$sub.'</td>
-                            <td><button><a href="index.php?pagina=carrinho&acao=del&id='.$id.'">Remove</a></button></br></td>
+                            <td><button><a href="index.php?pagina=carrinho&acao=del&id='.$id.'"><span class="glyphicon glyphicon-trash"></span>Remover</a></button></br></td>
                             </tr>';
                     }
                     $total = number_format($total, 2, ',', '.');
@@ -98,6 +95,11 @@
             ?>
 
          </tbody>
+                 <tfoot>
+            <tr>
+                <td colspan="5" style="text-align:center;"><input type="submit" value="Atualizar Carrinho" /></td>
+                <tr/>
+        </tfoot>
         </form>
     </table>
 </div>
