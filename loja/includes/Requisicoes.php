@@ -34,6 +34,9 @@ class Requisicoes {
             case "categoria":
                 require $this->requestPath(). '/admin/paginas/cadCategoria.php';
                 break;
+            case "produtos":
+                require $this->requestPath(). '/admin/paginas/cadProdutos.php';
+                break;
             default : 
                 require $this->requestPath(). '/admin/paginas/admin.php';
         }
@@ -41,6 +44,12 @@ class Requisicoes {
 
     function requestModules($module) {
         return $_SERVER['DOCUMENT_ROOT'] . $this->requestProjectFolder() . "includes/modulos/" . $module . ".php";
+    }
+    function setNomeArquivoUpload($nome){
+        $this->nome = $nome; 
+    }
+    function getNomeArquivoUpload(){
+        return $this->nome;
     }
 
 }
