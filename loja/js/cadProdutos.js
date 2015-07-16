@@ -11,13 +11,13 @@ $(document).ready(function () {
         $(".linkimg").keyup(function () {
             $(".linkimgHidden").val($(".linkimg").val());
         });
-//        $('.imagem').on('change', function () {
-//            $('#visualizar').html('Enviando...');
-//            /* Efetua o Upload sem dar refresh na pagina */
-//            $('#myPopup-new .formulario').ajaxForm({
-//                target: '#visualizar'
-//            }).submit();
-//        });
+        $('.imagem').on('change', function () {
+            $('#visualizar').html('Enviando...');
+            /* Efetua o Upload sem dar refresh na pagina */
+            $('#myPopup-new .formulario').ajaxForm({
+                target: '#visualizar'
+            }).submit();
+        });
 
         $(".destaque").change(function () {
             $(".destaqueHidden").val($('input[name=destaque]:checked').val());

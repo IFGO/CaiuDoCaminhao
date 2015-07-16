@@ -8,7 +8,7 @@ class formProdutos {
         $query = "SELECT * FROM categorias";
         $consulta = mysqli_query(Conexao::getInstance(), $query);
         ?>
-        <form action="paginas/upload.php" method="post" class="formulario">
+        <form action="paginas/upload.php" method="post" class="formulario" enctype="multipart/form-data">
             <div data-role="main">
                 <label>Nome:</label>
                 <input type="text" class="nome" name="nome" value="<?php echo $nome; ?>" />
