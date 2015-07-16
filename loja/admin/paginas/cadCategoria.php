@@ -7,6 +7,8 @@
 
 <script src="<?php echo $requisicoes->requestURL();?>js/cadCategoria.js" > </script>
 
+<h2>Categorias</h2>
+<p>Gerencie as categorias da loja</p>
 <div class="" id="mensagem"></div>
 
 <div class="comands col-md-12">            

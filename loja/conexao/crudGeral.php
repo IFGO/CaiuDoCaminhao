@@ -33,7 +33,7 @@ class crud {
         }
 
         if (!$this->upd = mysqli_query(Conexao::getInstance(), $this->sql_upd)) {
-            die("<center>Erro na atualização " . "<br>Linha: " . __LINE__ . "<br>" . mysqli_error() . "<br>
+            die("<center>$this->sql_upd - Erro na atualização " . "<br>Linha: " . __LINE__ . "<br>" . mysqli_error() . "<br>
 				<a href='index.php'>Voltar ao Menu</a></center>");
         } else {
             print "<center>Registro Atualizado com Sucesso!</center>";

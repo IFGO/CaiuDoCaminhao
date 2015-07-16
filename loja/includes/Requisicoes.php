@@ -51,5 +51,18 @@ class Requisicoes {
     function getNomeArquivoUpload(){
         return $this->nome;
     }
+    
+    function requestScanDir($dir) {
+        return scandir($this->requestPath().$dir);
+    }
+    
+    function requestCss() { 
+        $arquivo = $this->requestScanDir("css");
+        foreach($arquivo as $css) { 
+            if($css != '.' and $css != '..'){ ?>
+                <link rel="stylesheet" href="<?php echo $this->requestURL(); ?>css/<?php echo $css; ?>" type="text/css" />
+            <?php }
+        }
+    }
 
 }

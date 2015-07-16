@@ -1,4 +1,5 @@
 <?php
+//ini_set("display_errors", "On");
 require_once "../includes/Requisicoes.php";
 require_once "../conexao/Conexao.php";
 $requisicoes = new Requisicoes();
@@ -27,6 +28,7 @@ $requisicoes = new Requisicoes();
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://malsup.github.io/jquery.form.js"></script>
 
         <link rel="stylesheet" href="<?php echo $requisicoes->requestURL(); ?>css/bootstrap-theme.min.css" type="text/css" />
         <link rel="stylesheet" href="<?php echo $requisicoes->requestURL(); ?>css/bootstrap.min.css" type="text/css" />
@@ -37,8 +39,13 @@ $requisicoes = new Requisicoes();
     <body>
         <header class="col-md-12">
             <div class="container">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <?php require $requisicoes->requestModules("logotipo"); ?>
+                </div>
+                <div class="col-md-6">
+                    <div class="usuario">
+                        <span class="glyphicon glyphicon-user"></span> Seja bem vindo, <span style="text-transform: capitalize;"><?php echo $logado; ?></span>
+                    </div>
                 </div>
             </div>
         </header>

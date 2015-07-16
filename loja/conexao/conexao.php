@@ -15,6 +15,9 @@ class conexao {
         return self::$instance;
     }
 
+    public static function getQuery($sql) {
+        return mysqli_query(Conexao::getInstance(), $sql);
+    }
 }
 
 ?>

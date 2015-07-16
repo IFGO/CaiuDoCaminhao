@@ -19,7 +19,7 @@ $requisicoes = new Requisicoes();
     <div class="col-md-1">
         <a class="btn btn-mini btn-success" data-rel="popup" href="#myPopup-new"><span class="glyphicon glyphicon-plus-sign"></span> Novo</a>
 
-        <div data-role="popup" id="myPopup-new" class="ui-content" data-dismissible="false" style="width:600px;height: 600px; left: -50%;">
+        <div data-role="popup" id="myPopup-new" class="ui-content" data-dismissible="false" style="width:600px;min-height: 600px; left: -50%;">
             <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>            
 <?php $form->exibir("btnCadastrar"); ?>
         </div>
@@ -54,10 +54,10 @@ $requisicoes = new Requisicoes();
                                 <span class="glyphicon glyphicon-edit"></span>
                             </div>
                         </a>
-                        <div data-role="popup" id="myPopup-<?php echo $campo['id']; ?>" class="ui-content" data-dismissible="false" style="max-width:600px;max-height: 600px">
+                        <div data-role="popup" id="myPopup-<?php echo $campo['id']; ?>" class="ui-content" data-dismissible="false" style="max-width:600px;min-height: 600px">
                             <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
 
-                            <?php $form->exibir("bntEdit", $campo['id'], $campo['nome'], $campo['descricao'], $campo['menu_relacionado'], $campo['nome_menu']); ?>
+                            <?php $form->exibir("bntEdit", $campo['id'], $campo['nome'], $campo['descricao'], $campo['idCategoria'], $campo['valor'], $campo['foto'], $campo['nome_categoria'], $campo['destaque']); ?>
 
                             <?php
                             $classe = 'class="success text-success mensagem-sucesso"';
@@ -70,20 +70,33 @@ $requisicoes = new Requisicoes();
                                         $('#myPopup-" . $campo['id'] . " .descricao').keyup(function () {
                                             $('#myPopup-" . $campo['id'] . " .descricaoHidden').val($('#myPopup-" . $campo['id'] . " .descricao').val());
                                         });
-                                        $('#myPopup-" . $campo['id'] . " .menurel').change(function () {
-                                            $('#myPopup-" . $campo['id'] . " .menurelHidden').val($('#myPopup-" . $campo['id'] . " .menurel :selected').val());
-                                        });    
+                                        $('#myPopup-" . $campo['id'] . " .valor').keyup(function () {
+                                            $('#myPopup-" . $campo['id'] . " .valorHidden').val($('#myPopup-" . $campo['id'] . " .valor').val());
+                                        });
+                                        $('#myPopup-" . $campo['id'] . " .linkimg').keyup(function () {
+                                            $('#myPopup-" . $campo['id'] . " .linkimgHidden').val($('#myPopup-" . $campo['id'] . " .linkimg').val());
+                                        });
+                                        $('#myPopup-" . $campo['id'] . " .destaque').change(function () {
+                                            $('#myPopup-" . $campo['id'] . " .destaqueHidden').val($('#myPopup-" . $campo['id'] . " input[name=destaque]:checked').val());
+                                        });
+                                        $('#myPopup-" . $campo['id'] . " .categoria').change(function () {
+                                            $('#myPopup-" . $campo['id'] . " .categoriaHidden').val($('#myPopup-" . $campo['id'] . " .categoria :selected').val());
+                                        });
 
                                         $('#bntEdit-" . $campo['id'] . "').click(function (e) {
                                             e.preventDefault();
                                             $.ajax({
                                                 type: 'POST',
-                                                url: 'paginas/crud/crudCategorias.php',
+                                                url: 'paginas/crud/crudProdutos.php',
                                                 data: {
                                                     id: $(this).parent().siblings('.idHidden').val(),
                                                     nome: $(this).parent().siblings('.nomeHidden').val(),
                                                     descricao: $(this).parent().siblings('.descricaoHidden').val(),
-                                                    menurel: $(this).parent().siblings('.menurelHidden').val(),
+                                                    destaque: $(this).parent().siblings('.destaqueHidden').val(),
+                                                    linkimg: $(this).parent().siblings('.linkimgHidden').val(),
+                                                    foto: $(this).parent().siblings('.imagemHidden').val(),
+                                                    valor: $(this).parent().siblings('.valorHidden').val(),
+                                                    categoria: $(this).parent().siblings('.categoriaHidden').val(),
                                                     opt: 'editar'
                                                 },
                                                 success: function (data) {

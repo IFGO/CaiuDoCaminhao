@@ -7,7 +7,9 @@ $requisicoes = new Requisicoes();
 $crud = new crud("produtos");
 $imagemUp = $requisicoes->getNomeArquivoUpload();
 
-if(empty($imagemUp)||$imagemUp==null){
+if (!empty($_POST['foto'])) {
+    $imagemUp = $_POST['foto'];
+} elseif (empty($imagemUp) || $imagemUp == null || empty($_POST['foto'])) {
     $imagemUp = $_POST['linkimg'];
 }
 if ($_POST['opt'] == "cadastro") {
@@ -15,7 +17,7 @@ if ($_POST['opt'] == "cadastro") {
     $valores = "";
 
     $campos .= ("nome,descricao,valor,foto,destaque,idCategoria");
-    $valores .= "'" . $_POST['nome'] . "','" . $_POST['descricao'] . "'," . $_POST['valor'] . ",'" . $imagemUp . "'," . $_POST['destaque']. "," . $_POST['categoria'];
+    $valores .= "'" . $_POST['nome'] . "','" . $_POST['descricao'] . "'," . $_POST['valor'] . ",'" . $imagemUp . "'," . $_POST['destaque'] . "," . $_POST['categoria'];
 
     $crud->inserir($campos, $valores);
 }
@@ -31,21 +33,14 @@ if ($_POST['opt'] == "excluir") {
 if ($_POST['opt'] == "editar") {
     $camposvalores = "";
     $where = "";
-    if (!empty($_POST['nome'])) {
-        $camposvalores .= "nome = '" . $_POST["nome"] . "'";
-        if (!empty($_POST['descricao']) || !empty($_POST['menurel'])) {
-            $camposvalores .= ",";
-        }
-    }
-    if (!empty($_POST['descricao'])) {
-        $camposvalores .= "descricao = '" . $_POST['descricao'] . "'";
-        if (!empty($_POST['menurel'])) {
-            $camposvalores .= ",";
-        }
-    }
-    if (!empty($_POST['menurel'])) {
-        $camposvalores .= "menu_relacionado = " . $_POST['menurel'];
-    }
+    
+    $camposvalores .= "nome = '" . $_POST["nome"] . "',";
+    $camposvalores .= "descricao = '" . $_POST["descricao"] . "',";
+    $camposvalores .= "valor = " . $_POST["valor"] . ",";
+    $camposvalores .= "foto = '" . $imagemUp . "',";
+    $camposvalores .= "destaque = " . $_POST["destaque"] . ",";
+    $camposvalores .= "idCategoria = " . $_POST["categoria"] . "";
+
     $where = "id = " . $_POST["id"];
     $crud->atualizar($camposvalores, $where);
 }

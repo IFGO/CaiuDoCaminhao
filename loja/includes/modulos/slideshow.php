@@ -1,7 +1,5 @@
 <?php
-    $func = new Requisicoes();
-    $dir = $func->requestPath().'imagens/slideshow';
-    $arq = scandir($dir);              
+    $arq = $requisicoes->requestScanDir("imagens/slideshow");             
 ?>
 
 <div id="slideHome"> 

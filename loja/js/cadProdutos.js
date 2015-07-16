@@ -11,13 +11,13 @@ $(document).ready(function () {
         $(".linkimg").keyup(function () {
             $(".linkimgHidden").val($(".linkimg").val());
         });
-//        $('.imagem').on('change', function () {
-//            $('#visualizar').html('Enviando...');
-//            /* Efetua o Upload sem dar refresh na pagina */
-//            $('#myPopup-new .formulario').ajaxForm({
-//                target: '#visualizar'
-//            }).submit();
-//        });
+        $('.imagem').on('change', function () {
+            $('#visualizar').html('Enviando...');
+            /* Efetua o Upload sem dar refresh na pagina */
+            $('#myPopup-new .formulario').ajaxForm({
+                target: '#visualizar'
+            }).submit();
+        });
 
         $(".destaque").change(function () {
             $(".destaqueHidden").val($('input[name=destaque]:checked').val());
@@ -49,7 +49,7 @@ $(document).ready(function () {
             var lista_ids = array.join(',');
             $.ajax({
                 type: 'POST',
-                url: 'paginas/crud/crudCategorias.php',
+                url: 'paginas/crud/crudProdutos.php',
                 data: {
                     id: lista_ids,
                     opt: "excluir"

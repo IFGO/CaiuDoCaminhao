@@ -69,7 +69,7 @@
                 }else{
                     $total = 0;
                     foreach($_SESSION['carrinho'] as $id => $qtd){
-                        $qr    = mysqli_query(Conexao::getInstance(), Sql::getSqlProduto($id)) or die(mysql_error());
+                        $qr    = Conexao::getQuery(Sql::getSqlProduto($id)) or die(mysql_error());
                         $ln    = mysqli_fetch_assoc($qr);
 
                         $nome  = $ln['nome'];

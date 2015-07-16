@@ -2,13 +2,13 @@
 
 class formProdutos {
 
-    public function exibir($class, $idCampo = null, $nome = null, $descricao = null, $idCat = null, $cat = null, $imagem = null, $destaque = null) {
+    public function exibir($class, $idCampo = null, $nome = null, $descricao = null, $idCat = null, $valor = null, $imagem = null, $cat = null, $destaque = null) {
         ?>
         <?php
         $query = "SELECT * FROM categorias";
         $consulta = mysqli_query(Conexao::getInstance(), $query);
         ?>
-        <form action="paginas/upload.php" method="post" class="formulario">
+        <form action="paginas/upload.php" method="post" class="formulario" enctype="multipart/form-data">
             <div data-role="main">
                 <label>Nome:</label>
                 <input type="text" class="nome" name="nome" value="<?php echo $nome; ?>" />
@@ -20,14 +20,14 @@ class formProdutos {
                 <input type="text" class="valor" name="valor" value="<?php echo $valor; ?>" placeholder="R$ 00,00" />
                 <br />
                 <label>Link foto:</label>
-                <input type="text" name="linkimg" class="linkimg" >
+                <input type="text" name="linkimg" class="linkimg" value="<?php echo $imagem; ?>" >
                 <br />
                 <label>Imagem:</label>
                 <input type="file" name="imagem" class="imagem" >
                 <br />
                 <label>Destaque:</label>
-                <input type="radio" name="destaque" value="0" class="destaque">Não<br>
-                <input type="radio" name="destaque" value="1" class="destaque">Sim
+                <div><input type="radio" name="destaque" value="0" class="destaque" <?php if($destaque==0) echo "checked" ?>><span class="opt">Não</span></div><br>
+                <div><input type="radio" name="destaque" value="1" class="destaque" <?php if($destaque==1) echo "checked" ?>><span class="opt">Sim</span></div>
                 <br />
                 <select name="categoria" class="categoria">
                     <option value="">Selecione uma categoria</option>

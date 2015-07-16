@@ -3,7 +3,7 @@
 <div id="accordion">
     <?php
         
-        $categorias = mysqli_query(Conexao::getInstance(), Sql::getSqlCategorias());
+        $categorias = Conexao::getQuery(Sql::getSqlCategorias());
         while($categoria = $categorias->fetch_array()) { ?>
             <h4> <?php echo $categoria['nome']; ?> </h4>
             <div>
