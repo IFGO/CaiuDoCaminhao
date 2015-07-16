@@ -183,8 +183,8 @@ footer p {
     margin-top: 20px;
 }
 .ui-popup-screen.in {
-  opacity: 0.7 !important;
-  background-color: #7C7C7C !important;
+    opacity: 0.7 !important;
+    background-color: #7C7C7C !important;
 }
 input[type="radio"], input[type="checkbox"] {
     margin: 6px -7px 0px 7px !important;
@@ -199,8 +199,14 @@ input[type="radio"], input[type="checkbox"] {
     outline: 0!important; 
     z-index: 1; 
 }
+.usuario {
+    float: right;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 32px;
+}
 span.opt {
-  margin-left: 11px;
+    margin-left: 11px;
 }
 .ui-checkbox, .ui-radio {
     margin: 0 !important;
