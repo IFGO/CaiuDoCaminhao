@@ -6,24 +6,24 @@ $requisicoes = new Requisicoes();
 ?>
 
 <?php
-    //validar a existência de sessão
-    session_start(); 
-    if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true)){ 
-        unset($_SESSION['login']); 
-        unset($_SESSION['senha']); 
-        header('location:index.php');         
-    } 
-    $logado = $_SESSION['login']; 
+//validar a existência de sessão
+session_start();
+if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
+    unset($_SESSION['login']);
+    unset($_SESSION['senha']);
+    header('location:index.php');
+}
+$logado = $_SESSION['login'];
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="shortcut icon" href="<?php echo $requisicoes->requestURL();?>favicon.ico" />
-         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="<?php echo $requisicoes->requestURL(); ?>favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Caiu do Caminhão - Administração</title>
-        
+
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -45,6 +45,9 @@ $requisicoes = new Requisicoes();
                 <div class="col-md-6">
                     <div class="usuario">
                         <span class="glyphicon glyphicon-user"></span> Seja bem vindo, <span style="text-transform: capitalize;"><?php echo $logado; ?></span>
+                        <div style="margin-top: 6px;">
+                            <a href="index.php" style="color: #000 !important;"><span class="glyphicon glyphicon-off"></span> Sair</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -57,8 +60,9 @@ $requisicoes = new Requisicoes();
         <div class="container">
             <main class="col-md-12">
                 <?php
-                    if(!isset($_GET["pagina"])) $_GET["pagina"] = null;
-                    $requisicoes->requestAdminPage($_GET["pagina"]); 
+                if (!isset($_GET["pagina"]))
+                    $_GET["pagina"] = null;
+                $requisicoes->requestAdminPage($_GET["pagina"]);
                 ?>
             </main>
         </div>

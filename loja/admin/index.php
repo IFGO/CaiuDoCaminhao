@@ -1,5 +1,9 @@
 <?php
 //ini_set("display_errors", "On");
+session_start();
+unset($_SESSION['login']);
+unset($_SESSION['senha']);
+$logado = null;
 require_once "../includes/Requisicoes.php";
 require_once "../conexao/Conexao.php";
 $requisicoes = new Requisicoes();
