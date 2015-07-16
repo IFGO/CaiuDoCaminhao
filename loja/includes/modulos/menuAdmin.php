@@ -1,6 +1,6 @@
 <?php
     require_once "../conexao/sql.php";
-    $categorias = mysqli_query(Conexao::getInstance(), Sql::getSqlMenuAdmin());
+    $categorias = Conexao::getQuery(Sql::getSqlMenuAdmin());
     
     while($categoria = $categorias->fetch_array()) { ?>
         <div class="col-md-4" style="text-align: center;">

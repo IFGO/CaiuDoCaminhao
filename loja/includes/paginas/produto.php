@@ -1,5 +1,5 @@
 <?php
-    $produto = mysqli_query(Conexao::getInstance(), Sql::getSqlProduto($_GET['id']))->fetch_array();
+    $produto = Conexao::getQuery(Sql::getSqlProduto($_GET['id']))->fetch_array();
 ?>
 
 <div class="col-md-12">

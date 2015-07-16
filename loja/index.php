@@ -12,10 +12,9 @@ $requisicoes = new Requisicoes();
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Caiu do Caminhão - Página Inicial</title>
         
-        <link rel="stylesheet" href="<?php echo $requisicoes->requestURL(); ?>css/bootstrap-theme.min.css" type="text/css" />
-        <link rel="stylesheet" href="<?php echo $requisicoes->requestURL(); ?>css/bootstrap.min.css" type="text/css" />
-        <link rel="stylesheet" href="<?php echo $requisicoes->requestURL(); ?>css/estilo.css" type="text/css" />
-        <link rel="stylesheet" href="<?php echo $requisicoes->requestURL(); ?>css/jquery-ui.css" type="text/css" /> 
+        <?php  
+            $requisicoes->requestCss(); 
+        ?> 
         
         <script src="<?php echo $requisicoes->requestURL();?>js/bootstrap.min.js" > </script>
         <script src="<?php echo $requisicoes->requestURL();?>js/jquery.min.js" > </script>

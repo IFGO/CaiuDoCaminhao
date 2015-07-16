@@ -13,7 +13,7 @@
         }
     }
     
-    $categorias = mysqli_query(Conexao::getInstance(), Sql::getSqlMenu());
+    $categorias = Conexao::getQuery(Sql::getSqlMenu());
     
     while($categoria = $categorias->fetch_array()) { ?>
         <div class="col-md-2 <?php echo verificarAtivo($categoria['link']); ?>">
