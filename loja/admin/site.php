@@ -39,8 +39,13 @@ $requisicoes = new Requisicoes();
     <body>
         <header class="col-md-12">
             <div class="container">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <?php require $requisicoes->requestModules("logotipo"); ?>
+                </div>
+                <div class="col-md-6">
+                    <div class="usuario">
+                        <span class="glyphicon glyphicon-user"></span> Seja bem vindo, <span style="text-transform: capitalize;"><?php echo $logado; ?></span>
+                    </div>
                 </div>
             </div>
         </header>
